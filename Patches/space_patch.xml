@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+  <Operation Class="XmlExtensions.ForEach">
+    <xpath>Defs/*/label</xpath>
+    <apply> 
+      <Operation Class="XmlExtensions.CreateVariable">
+        <storeIn>defLabel</storeIn>
+        <value>{DEF}/label</value>
+        <fromXml>true</fromXml>
+        <apply> 
+          <Operation Class="PatchOperationReplace">
+            <xpath>{DEF}/label</xpath>
+            <value>
+              <label>space {defLabel}</label>
+            </value>
+          </Operation>
+        </apply>
+      </Operation>
+    </apply>
+  </Operation>
+  
+</Patch>
