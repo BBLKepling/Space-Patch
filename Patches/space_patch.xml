@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Patch>
 
+<Operation Class="XmlExtensions.UseSetting">
+  <modId>BBLK_Space_Patch</modId>
+  <key>More_Space_Patch</key>
+  <defaultValue>1</defaultValue>
+  <apply>
+    <Operation Class="XmlExtensions.ForLoop">
+      <storeIn>spaceCounter</storeIn>
+      <from>0</from>
+      <to>{More_Space_Patch}</to>   
+      <apply>
+
   <Operation Class="XmlExtensions.ForEach">
     <xpath>Defs/*[label]</xpath>
     <apply> 
@@ -19,7 +30,7 @@
       </Operation>
     </apply>
   </Operation>
-  
+
   <Operation Class="XmlExtensions.ForEach">
     <xpath>Defs/*[tools]</xpath>
     <apply> 
@@ -48,7 +59,7 @@
       </Operation>
     </apply>
   </Operation>
-  
+
   <Operation Class="XmlExtensions.ForEach">
     <xpath>Defs/HediffDef[comps/li[@Class="HediffCompProperties_VerbGiver"]/tools]</xpath>
     <apply> 
@@ -109,7 +120,7 @@
     </apply>
   </match>
 </Operation>
-  
+
 <Operation Class="PatchOperationConditional">
   <xpath>Defs/HediffDef[comps/li[@Class="MVCF.Comps.HediffCompProperties_ExtendedVerbGiver"]/verbProps/li/visualLabel]</xpath>
   <match Class="XmlExtensions.ForEach">
@@ -141,5 +152,10 @@
     </apply>
   </match>
 </Operation>
-  
+
+      </apply>
+    </Operation>
+  </apply>
+</Operation>
+
 </Patch>
