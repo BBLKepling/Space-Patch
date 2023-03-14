@@ -2,7 +2,7 @@
 <Patch>
 
   <Operation Class="XmlExtensions.ForEach">
-    <xpath>Defs/*/label</xpath>
+    <xpath>Defs/*[label]</xpath>
     <apply> 
       <Operation Class="XmlExtensions.CreateVariable">
         <storeIn>defLabel</storeIn>
@@ -14,6 +14,64 @@
             <value>
               <label>space {defLabel}</label>
             </value>
+          </Operation>
+        </apply>
+      </Operation>
+    </apply>
+  </Operation>
+  
+  <Operation Class="XmlExtensions.ForEach">
+    <xpath>Defs/*[tools]</xpath>
+    <apply> 
+      <Operation Class="XmlExtensions.ForLoop">
+        <storeIn>listLength</storeIn>
+        <from>0</from>
+        <to>4</to>   
+        <apply>
+          <Operation Class="PatchOperationConditional">
+            <xpath>{DEF}/tools/li[{listLength}]/label</xpath>
+            <match Class="XmlExtensions.CreateVariable">
+              <storeIn>toolLabel</storeIn>
+              <value>{DEF}/tools/li[{listLength}]/label</value>
+              <fromXml>true</fromXml>
+              <apply> 
+                <Operation Class="PatchOperationReplace">
+                  <xpath>{DEF}/tools/li[{listLength}]/label</xpath>
+                  <value>
+                    <label>space {toolLabel}</label>
+                  </value>
+                </Operation>
+              </apply>
+            </match>
+          </Operation>
+        </apply>
+      </Operation>
+    </apply>
+  </Operation>
+  
+  <Operation Class="XmlExtensions.ForEach">
+    <xpath>Defs/HediffDef[comps/li[@Class="HediffCompProperties_VerbGiver"]/tools]</xpath>
+    <apply> 
+      <Operation Class="XmlExtensions.ForLoop">
+        <storeIn>listLength</storeIn>
+        <from>0</from>
+        <to>4</to>   
+        <apply>
+          <Operation Class="PatchOperationConditional">
+            <xpath>{DEF}/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools/li[{listLength}]/label</xpath>
+            <match Class="XmlExtensions.CreateVariable">
+              <storeIn>toolLabel</storeIn>
+              <value>{DEF}/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools/li[{listLength}]/label</value>
+              <fromXml>true</fromXml>
+              <apply> 
+                <Operation Class="PatchOperationReplace">
+                  <xpath>{DEF}/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools/li[{listLength}]/label</xpath>
+                  <value>
+                    <label>space {toolLabel}</label>
+                  </value>
+                </Operation>
+              </apply>
+            </match>
           </Operation>
         </apply>
       </Operation>
