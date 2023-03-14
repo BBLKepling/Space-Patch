@@ -77,5 +77,69 @@
       </Operation>
     </apply>
   </Operation>
+
+<Operation Class="PatchOperationConditional">
+  <xpath>Defs/HediffDef[comps/li[@Class="MVCF.Comps.HediffCompProperties_ExtendedVerbGiver"]/tools/li/label]</xpath>
+  <match Class="XmlExtensions.ForEach">
+    <xpath>Defs/HediffDef[comps/li[@Class="MVCF.Comps.HediffCompProperties_ExtendedVerbGiver"]/tools/li/label]</xpath>
+    <apply> 
+      <Operation Class="XmlExtensions.ForLoop">
+        <storeIn>listLength</storeIn>
+        <from>0</from>
+        <to>4</to>   
+        <apply>
+          <Operation Class="PatchOperationConditional">
+            <xpath>{DEF}/comps/li[@Class="MVCF.Comps.HediffCompProperties_ExtendedVerbGiver"]/tools/li[{listLength}]/label</xpath>
+            <match Class="XmlExtensions.CreateVariable">
+              <storeIn>toolLabel</storeIn>
+              <value>{DEF}/comps/li[@Class="MVCF.Comps.HediffCompProperties_ExtendedVerbGiver"]/tools/li[{listLength}]/label</value>
+              <fromXml>true</fromXml>
+              <apply> 
+                <Operation Class="PatchOperationReplace">
+                  <xpath>{DEF}/comps/li[@Class="MVCF.Comps.HediffCompProperties_ExtendedVerbGiver"]/tools/li[{listLength}]/label</xpath>
+                  <value>
+                    <label>space {toolLabel}</label>
+                  </value>
+                </Operation>
+              </apply>
+            </match>
+          </Operation>
+        </apply>
+      </Operation>
+    </apply>
+  </match>
+</Operation>
+  
+<Operation Class="PatchOperationConditional">
+  <xpath>Defs/HediffDef[comps/li[@Class="MVCF.Comps.HediffCompProperties_ExtendedVerbGiver"]/verbProps/li/visualLabel]</xpath>
+  <match Class="XmlExtensions.ForEach">
+    <xpath>Defs/HediffDef[comps/li[@Class="MVCF.Comps.HediffCompProperties_ExtendedVerbGiver"]/verbProps/li/visualLabel]</xpath>
+    <apply> 
+      <Operation Class="XmlExtensions.ForLoop">
+        <storeIn>listLength</storeIn>
+        <from>0</from>
+        <to>4</to>   
+        <apply>
+          <Operation Class="PatchOperationConditional">
+            <xpath>{DEF}/comps/li[@Class="MVCF.Comps.HediffCompProperties_ExtendedVerbGiver"]/verbProps/li[{listLength}]/visualLabel</xpath>
+            <match Class="XmlExtensions.CreateVariable">
+              <storeIn>visLabel</storeIn>
+              <value>{DEF}/comps/li[@Class="MVCF.Comps.HediffCompProperties_ExtendedVerbGiver"]/verbProps/li[{listLength}]/visualLabel</value>
+              <fromXml>true</fromXml>
+              <apply> 
+                <Operation Class="PatchOperationReplace">
+                  <xpath>{DEF}/comps/li[@Class="MVCF.Comps.HediffCompProperties_ExtendedVerbGiver"]/verbProps/li[{listLength}]/visualLabel</xpath>
+                  <value>
+                    <visualLabel>space {visLabel}</visualLabel>
+                  </value>
+                </Operation>
+              </apply>
+            </match>
+          </Operation>
+        </apply>
+      </Operation>
+    </apply>
+  </match>
+</Operation>
   
 </Patch>
