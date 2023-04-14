@@ -14,6 +14,11 @@
         <max>5</max>
         <decimals>0</decimals>
       </li>
+      <li Class="XmlExtensions.Setting.Checkbox">
+        <key>Hyper_Patch</key>
+        <label>Add Hyper before all the Spaces</label>
+        <defaultValue>false</defaultValue>
+      </li>
     </settings>
   </XmlExtensions.SettingsMenuDef>
 
