@@ -7,6 +7,7 @@
     <li>1.4</li>
     <li>1.5</li>
     <li>1.6</li>
+    <li>1.7</li>
   </supportedVersions>
   <packageId>bblkepling.spacepatch</packageId>
   <description>Adds "Space" to the beginning of every label in the game.</description>
